@@ -1,0 +1,3 @@
+# SocialBuddy
+
+Initial commit.
