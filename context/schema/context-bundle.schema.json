@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://socialbuddy.local/schemas/context-bundle.schema.json",
+  "title": "SocialBuddy context bundle",
+  "type": "object",
+  "required": ["id", "purpose", "created_at", "mock", "records"],
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "string" },
+    "purpose": { "type": "string" },
+    "created_at": { "type": "string" },
+    "mock": { "type": "boolean" },
+    "notes": { "type": "string" },
+    "records": {
+      "type": "array",
+      "items": { "$ref": "context-record.schema.json" }
+    }
+  }
+}
