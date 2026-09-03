@@ -1,0 +1,142 @@
+{
+  "id": "bundle-mock-001",
+  "purpose": "Schema and documentation fixture for profile + dbt skill signals",
+  "created_at": "2026-04-01T12:00:00Z",
+  "mock": true,
+  "notes": "EXAMPLE / MOCK ONLY. Not a real person, employer, or repository.",
+  "records": [
+    {
+      "id": "rec-mock-title",
+      "kind": "profile_fact",
+      "statement": "Current title: Staff Analytics Engineer (example).",
+      "subject": "person:mock-alex-rivera",
+      "epistemic_status": "operator_asserted",
+      "provenance": {
+        "source_class": "operator",
+        "adapter": "linkedin-paste",
+        "locator": "paste://about-section",
+        "observed_at": "2026-03-28T00:00:00Z",
+        "ingested_at": "2026-04-01T12:00:00Z",
+        "author": "operator:mock"
+      },
+      "confidence": {
+        "score": 0.95,
+        "method": "operator_entry",
+        "rationale": "Entered by the operator in a labeled mock session."
+      },
+      "freshness": {
+        "as_of": "2026-03-28T00:00:00Z",
+        "ttl_hours": 720,
+        "stale_action": "revalidate"
+      },
+      "redaction": {
+        "status": "clear",
+        "fields_removed": [],
+        "policy_version": "redaction-v0.1"
+      },
+      "sensitivity": "public",
+      "mock": true,
+      "tags": ["title", "example"]
+    },
+    {
+      "id": "rec-mock-employer",
+      "kind": "profile_fact",
+      "statement": "Employer: Northwind Analytics Co. (fictional) since 2024-06.",
+      "subject": "person:mock-alex-rivera",
+      "epistemic_status": "operator_asserted",
+      "provenance": {
+        "source_class": "linkedin",
+        "adapter": "linkedin-paste",
+        "locator": "paste://experience-1",
+        "observed_at": "2026-03-28T00:00:00Z",
+        "ingested_at": "2026-04-01T12:00:00Z",
+        "author": "operator:mock"
+      },
+      "confidence": {
+        "score": 0.9,
+        "method": "operator_entry",
+        "rationale": "Mock LinkedIn experience row supplied by operator paste."
+      },
+      "freshness": {
+        "as_of": "2026-03-28T00:00:00Z",
+        "ttl_hours": 720,
+        "stale_action": "revalidate"
+      },
+      "redaction": {
+        "status": "clear",
+        "fields_removed": [],
+        "policy_version": "redaction-v0.1"
+      },
+      "sensitivity": "public",
+      "mock": true,
+      "tags": ["employer", "example"],
+      "related_ids": []
+    },
+    {
+      "id": "rec-mock-dbt-signal",
+      "kind": "skill_signal",
+      "statement": "Public repo example-dbt-project contains incremental models and uniqueness tests (fictional locator).",
+      "subject": "person:mock-alex-rivera",
+      "epistemic_status": "inferred",
+      "provenance": {
+        "source_class": "github",
+        "adapter": "github-interface",
+        "locator": "https://example.invalid/org/example-dbt-project",
+        "observed_at": "2026-03-01T00:00:00Z",
+        "ingested_at": "2026-04-01T12:00:00Z",
+        "author": "adapter:mock"
+      },
+      "confidence": {
+        "score": 0.35,
+        "method": "model_inferred",
+        "rationale": "Single mock repo; not corroborated. Do not print as a credential."
+      },
+      "freshness": {
+        "as_of": "2026-03-01T00:00:00Z",
+        "ttl_hours": 720,
+        "stale_action": "label_stale"
+      },
+      "redaction": {
+        "status": "clear",
+        "fields_removed": [],
+        "policy_version": "redaction-v0.1"
+      },
+      "sensitivity": "public",
+      "mock": true,
+      "tags": ["dbt", "example"]
+    },
+    {
+      "id": "rec-mock-redacted-email",
+      "kind": "excerpt",
+      "statement": "Recruiting thread mentioned a role opening; contact [REDACTED:email].",
+      "subject": "person:mock-alex-rivera",
+      "epistemic_status": "operator_asserted",
+      "provenance": {
+        "source_class": "email",
+        "adapter": "email-interface",
+        "locator": "message:mock-aaa",
+        "observed_at": "2026-02-10T09:00:00Z",
+        "ingested_at": "2026-04-01T12:00:00Z",
+        "author": "unknown"
+      },
+      "confidence": {
+        "score": 0.7,
+        "method": "operator_entry",
+        "rationale": "Operator pasted a mock email after redaction."
+      },
+      "freshness": {
+        "as_of": "2026-02-10T09:00:00Z",
+        "ttl_hours": 2160,
+        "stale_action": "label_stale"
+      },
+      "redaction": {
+        "status": "redacted",
+        "fields_removed": ["email"],
+        "policy_version": "redaction-v0.1"
+      },
+      "sensitivity": "restricted",
+      "mock": true,
+      "tags": ["pii-example"]
+    }
+  ]
+}

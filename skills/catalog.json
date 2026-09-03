@@ -1,0 +1,58 @@
+{
+  "version": "0.1.0",
+  "description": "Index of expert skill modules. IDs must match frontmatter and file paths listed here.",
+  "required_headings": [
+    "Purpose",
+    "Activation / Use Cases",
+    "Inputs",
+    "Procedure",
+    "Quality Rubric",
+    "Failure Modes",
+    "Safety Notes",
+    "Example Outputs",
+    "Verified vs Assumed"
+  ],
+  "example_label_patterns": [
+    "\\*\\*Example\\*\\*",
+    "illustration only",
+    "EXAMPLE —",
+    "[example]"
+  ],
+  "skills": [
+    {
+      "id": "phd-writing",
+      "path": "skills/writing/phd-writing.md",
+      "category": "writing"
+    },
+    {
+      "id": "phd-reading",
+      "path": "skills/reading/phd-reading.md",
+      "category": "reading"
+    },
+    {
+      "id": "dbt-professional",
+      "path": "skills/dbt/professional.md",
+      "category": "dbt"
+    },
+    {
+      "id": "dbt-solution-architect",
+      "path": "skills/dbt/solution-architect.md",
+      "category": "dbt"
+    },
+    {
+      "id": "snowflake-architect",
+      "path": "skills/snowflake/architect.md",
+      "category": "snowflake"
+    },
+    {
+      "id": "ai-enablement",
+      "path": "skills/ai/enablement.md",
+      "category": "ai"
+    },
+    {
+      "id": "ai-architect",
+      "path": "skills/ai/architect.md",
+      "category": "ai"
+    }
+  ]
+}

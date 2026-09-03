@@ -1,0 +1,174 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://socialbuddy.local/schemas/context-record.schema.json",
+  "title": "SocialBuddy context record",
+  "type": "object",
+  "required": [
+    "id",
+    "kind",
+    "statement",
+    "epistemic_status",
+    "provenance",
+    "confidence",
+    "freshness",
+    "redaction",
+    "sensitivity",
+    "mock"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "kind": {
+      "type": "string",
+      "enum": [
+        "profile_fact",
+        "claim",
+        "excerpt",
+        "metric",
+        "skill_signal",
+        "relationship",
+        "opportunity",
+        "event",
+        "document_chunk",
+        "engagement_signal",
+        "preference"
+      ]
+    },
+    "statement": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subject": {
+      "type": "string",
+      "description": "Who or what the statement is about (person id, org id, repo)."
+    },
+    "epistemic_status": {
+      "type": "string",
+      "enum": ["verified", "operator_asserted", "inferred", "unknown", "disputed"]
+    },
+    "provenance": {
+      "type": "object",
+      "required": ["source_class", "adapter", "ingested_at"],
+      "additionalProperties": false,
+      "properties": {
+        "source_class": {
+          "type": "string",
+          "enum": [
+            "linkedin",
+            "github",
+            "web",
+            "document",
+            "crm",
+            "email",
+            "calendar",
+            "operator",
+            "derived"
+          ]
+        },
+        "adapter": {
+          "type": "string"
+        },
+        "provider": {
+          "type": "string",
+          "description": "Optional vendor name. Absence means class-level only."
+        },
+        "locator": {
+          "type": "string",
+          "description": "URL, message id, file URI, or commit SHA."
+        },
+        "observed_at": {
+          "type": "string",
+          "description": "When the source said this (ISO-8601)."
+        },
+        "ingested_at": {
+          "type": "string",
+          "description": "When SocialBuddy ingested (ISO-8601)."
+        },
+        "author": {
+          "type": "string"
+        }
+      }
+    },
+    "confidence": {
+      "type": "object",
+      "required": ["score", "method"],
+      "additionalProperties": false,
+      "properties": {
+        "score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "method": {
+          "type": "string",
+          "enum": [
+            "direct_export",
+            "operator_entry",
+            "corroborated",
+            "single_secondary",
+            "model_inferred",
+            "unknown"
+          ]
+        },
+        "rationale": {
+          "type": "string"
+        }
+      }
+    },
+    "freshness": {
+      "type": "object",
+      "required": ["as_of"],
+      "additionalProperties": false,
+      "properties": {
+        "as_of": {
+          "type": "string"
+        },
+        "ttl_hours": {
+          "type": "number",
+          "minimum": 0
+        },
+        "stale_action": {
+          "type": "string",
+          "enum": ["revalidate", "withhold", "label_stale", "ignore"]
+        }
+      }
+    },
+    "redaction": {
+      "type": "object",
+      "required": ["status"],
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["clear", "redacted", "blocked"]
+        },
+        "fields_removed": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "policy_version": {
+          "type": "string"
+        }
+      }
+    },
+    "sensitivity": {
+      "type": "string",
+      "enum": ["public", "internal", "confidential", "restricted"]
+    },
+    "mock": {
+      "type": "boolean",
+      "description": "True if the record is synthetic. Samples must be true."
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "related_ids": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}
